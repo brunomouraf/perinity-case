@@ -20,6 +20,10 @@ public class Person {
         this.department = department;
     }
 
+    public Person() {
+
+    }
+
     public int getId() {
         return id;
     }
