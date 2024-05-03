@@ -16,11 +16,10 @@ public class PersonService {
     public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
-
     public Person savePerson(PersonRequest personRequest){
         try{
-            Person client = personRequest.saveRequestObeject();
-            return personRepository.save(client);
+            Person person = personRequest.saveRequestObeject();
+            return personRepository.save(person);
 
         }catch(Exception e){
             System.out.println(e.getMessage());

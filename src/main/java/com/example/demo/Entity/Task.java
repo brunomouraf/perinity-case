@@ -27,6 +27,9 @@ public class Task {
     @Column(name = "person_id")
     private int personId;
 
+    public Task() {
+    }
+
     public Task(int id, String title, String description, int deadline, Department department, String allocatedPerson, TaskStatus taskStatus, int personId) {
         this.id = id;
         this.title = title;
