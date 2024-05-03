@@ -29,7 +29,6 @@ public class PersonService {
     }
 
     public Person updatePerson(PersonRequest personRequest) {
-
         try {
             Person person = personRepository.findById(personRequest.getId());
             person.setName(personRequest.getName());
@@ -39,6 +38,14 @@ public class PersonService {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+
+    public void deletePerson(int id){
+        try{
+            personRepository.delete(personRepository.findById(id));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
