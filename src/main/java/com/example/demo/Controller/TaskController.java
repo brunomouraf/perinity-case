@@ -1,8 +1,7 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Entity.Person;
-import com.example.demo.Request.PersonRequest;
-import com.example.demo.Service.PersonService;
+import com.example.demo.Entity.Task;
+import com.example.demo.Request.TaskRequest;
 import com.example.demo.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,5 +20,15 @@ public class TaskController {
         this.taskService = taskService;
     }
 
+    @PostMapping("/register-task")
+    public ResponseEntity<Task> registerTask(@RequestBody TaskRequest taskRequest){
+        Task task = taskService.saveTask(taskRequest);
+        return new ResponseEntity<>(task, HttpStatus.CREATED);
+    }
 
+    @PostMapping("/allocate-person")
+    public ResponseEntity<Task> allocatePerson(@RequestBody TaskRequest taskRequest){
+        Task task = taskService.allocatePerson(taskRequest);
+        return new ResponseEntity<>(task, HttpStatus.OK);
+    }
 }
