@@ -24,19 +24,19 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @PostMapping("/register-person")
+    @PostMapping("/pessoas")
     public ResponseEntity<Person> registerPerson(@RequestBody PersonRequest personRequest){
         Person person = personService.savePerson(personRequest);
         return new ResponseEntity<>(person, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update-person")
+    @PutMapping("/pessoas")
     public ResponseEntity<Person> updatePerson(@RequestBody PersonRequest personRequest){
         Person person = personService.updatePerson(personRequest);
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete-person/{id}")
+    @DeleteMapping("/pessoas/{id}")
     public ResponseEntity<String> deletePerson(@PathVariable int id){
         personService.deletePerson(id);
         return ResponseEntity.ok("Deletado com sucesso.");

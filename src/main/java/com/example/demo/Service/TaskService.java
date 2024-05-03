@@ -6,7 +6,11 @@ import com.example.demo.Enum.TaskStatus;
 import com.example.demo.Repository.PersonRepository;
 import com.example.demo.Repository.TaskRepository;
 import com.example.demo.Request.TaskRequest;
+import com.example.demo.Response.ListSpentHours;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TaskService {
@@ -57,5 +61,20 @@ public class TaskService {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    public List<Task> listPendingTasks(){
+        List<Task> listTasks = new ArrayList<>(taskRepository.findAll());
+        List<Task> listResponse = new ArrayList<>();
+
+        for (int i = 0; i < listTasks.size(); i++){
+            if(listTasks.get(i).getAllocatedPerson().isEmpty()){
+                listResponse.add(listTasks.get(i));
+                if(listResponse.size() >= 3){
+                    i = listTasks.size();
+                }
+            }
+        }
+        return listResponse;
     }
 }
