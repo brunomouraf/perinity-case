@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import com.example.demo.Enum.Department;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,9 +13,10 @@ public class Person {
     @Column(name = "name")
     private String name;
     @Column(name = "department")
-    private String department;
+    @Enumerated
+    private Department department;
 
-    public Person(int id, String name, String department) {
+    public Person(int id, String name, Department department) {
         this.id = id;
         this.name = name;
         this.department = department;
@@ -40,11 +42,11 @@ public class Person {
         this.name = name;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 }

@@ -1,7 +1,7 @@
 create table tb_person(
     id integer primary key,
     name varchar(50),
-    department varchar(50)
+    department varchar(10)
 );
 
 CREATE SEQUENCE tb_person_id_seq OWNED BY tb_person.id;
@@ -13,8 +13,9 @@ create table tb_task(
     title varchar(20),
     description varchar(50),
     deadline integer,
-    department varchar(50),
+    department varchar(10),
     allocated_person varchar(50),
+    task_status varchar(20),
     person_id integer
 );
 

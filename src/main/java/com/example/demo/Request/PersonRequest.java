@@ -1,15 +1,26 @@
 package com.example.demo.Request;
 
 import com.example.demo.Entity.Person;
-import jakarta.persistence.Column;
+import com.example.demo.Enum.Department;
 
-public class CreatePersonRequest {
+public class PersonRequest {
+
+    private int id;
     private String name;
-    private String department;
+    private Department department;
 
-    public CreatePersonRequest(String name, String department) {
+    public PersonRequest(int id, String name, Department department) {
+        this.id = id;
         this.name = name;
         this.department = department;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -20,11 +31,11 @@ public class CreatePersonRequest {
         this.name = name;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
