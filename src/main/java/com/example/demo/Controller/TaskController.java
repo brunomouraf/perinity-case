@@ -28,6 +28,12 @@ public class TaskController {
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
 
+    @PutMapping("/allocate-person")
+    public ResponseEntity<Task> allocatePerson(@RequestBody TaskRequest taskRequest){
+        Task task = taskService.allocatePerson(taskRequest);
+        return new ResponseEntity<>(task, HttpStatus.OK);
+    }
+
     @PutMapping("/finish-task/{id}")
     public ResponseEntity<Task> finishTask(@PathVariable int id){
         Task task = taskService.finishTask(id);

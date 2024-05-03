@@ -2,6 +2,8 @@ package com.example.demo.Controller;
 
 import com.example.demo.Entity.Person;
 import com.example.demo.Request.PersonRequest;
+import com.example.demo.Response.ListPerson;
+import com.example.demo.Response.ListSpentHours;
 import com.example.demo.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
 public class PersonController {
 
     private final PersonService personService;
@@ -35,6 +40,16 @@ public class PersonController {
     public ResponseEntity<String> deletePerson(@PathVariable int id){
         personService.deletePerson(id);
         return ResponseEntity.ok("Deletado com sucesso.");
+    }
+
+    @GetMapping("/pessoas")
+    public List<ListPerson> listPerson(){
+        return personService.listPeople();
+    }
+
+    @GetMapping("/gastos")
+    public List<ListSpentHours> listPersonSpentHours(){
+        return personService.listPeopleSpentHours();
     }
 
 }

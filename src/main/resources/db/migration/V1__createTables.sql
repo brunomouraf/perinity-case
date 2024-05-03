@@ -12,7 +12,7 @@ create table tb_task(
     id integer primary key,
     title varchar(20),
     description varchar(50),
-    deadline integer,
+    deadline int,
     department varchar(10),
     allocated_person varchar(50),
     task_status varchar(20),
