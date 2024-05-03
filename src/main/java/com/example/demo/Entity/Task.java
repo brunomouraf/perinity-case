@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import com.example.demo.Enum.Department;
 import com.example.demo.Enum.TaskStatus;
 import jakarta.persistence.*;
 
@@ -17,15 +18,16 @@ public class Task {
     @Column(name = "deadline")
     private int deadline;
     @Column(name = "department")
-    private String department;
+    private Department department;
     @Column(name = "allocated_person")
     private String allocatedPerson;
     @Column(name = "task_status")
+    @Enumerated(EnumType.STRING)
     private TaskStatus taskStatus;
     @Column(name = "person_id")
     private int personId;
 
-    public Task(int id, String title, String description, int deadline, String department, String allocatedPerson, TaskStatus taskStatus, int personId) {
+    public Task(int id, String title, String description, int deadline, Department department, String allocatedPerson, TaskStatus taskStatus, int personId) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -68,11 +70,11 @@ public class Task {
         this.deadline = deadline;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 

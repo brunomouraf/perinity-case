@@ -1,13 +1,13 @@
 package com.example.demo.Enum;
 
-public enum TaskStatus {
-    TD("To Do"),
-    IP("In Progress"),
-    D("Done");
+public enum Department {
+    BE("Back-end"),
+    FE("Front-end"),
+    DO("DevOps");
 
     private String description;
 
-    TaskStatus(String description){
+    Department(String description){
         this.description = description;
     }
 
