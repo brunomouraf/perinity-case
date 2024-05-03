@@ -2,6 +2,7 @@ package com.example.demo.Service;
 
 import com.example.demo.Entity.Person;
 import com.example.demo.Entity.Task;
+import com.example.demo.Enum.TaskStatus;
 import com.example.demo.Repository.PersonRepository;
 import com.example.demo.Repository.TaskRepository;
 import com.example.demo.Request.TaskRequest;
@@ -39,6 +40,18 @@ public class TaskService {
                 task.setPersonId(person.getId());
                 return taskRepository.save(task);
             }else throw new RuntimeException("Permissão negada - Departamentos incompativeis");
+
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public Task finishTask(int id){
+        try{
+            Task task = taskRepository.findById(id);
+            task.setTaskStatus(TaskStatus.D);
+            return taskRepository.save(task);
 
         }catch(Exception e){
             System.out.println(e.getMessage());
